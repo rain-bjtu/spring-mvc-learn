@@ -11,7 +11,6 @@ import com.rain.learn.sms.controller.BaseController;
 
 
 @Controller
-@RequestMapping(value = "/sign")
 public class SigninController extends BaseController {
     private static Logger logger = LoggerFactory.getLogger(SigninController.class);
 
