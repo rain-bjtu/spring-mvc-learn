@@ -1,4 +1,4 @@
-<%@ include file="include.jsp"%>
+<%@ include file="../common/include.jsp"%>
 
     <!DOCTYPE html>
     <html>

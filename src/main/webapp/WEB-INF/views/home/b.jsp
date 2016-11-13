@@ -1,16 +1,16 @@
-<%@ include file="include.jsp"%>
+<%@ include file="../common/include.jsp"%>
 
     <!DOCTYPE html>
     <html>
 
     <head>
 
-        <title>Contact</title>
+        <title>B</title>
 
     </head>
 
     <body>
-        <span>Contact</span>
+        <span>B</span>
 
 
     </body>

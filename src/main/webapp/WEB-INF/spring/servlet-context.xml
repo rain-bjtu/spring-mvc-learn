@@ -16,5 +16,5 @@
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
 
-    <context:component-scan base-package="com.rain.learn.sms.controller,com.rain.learn.sms.controller.common,com.rain.learn.sms.controller.sign" />
+    <context:component-scan base-package="com.rain.learn.sms.controller.*" />
 </beans:beans>
