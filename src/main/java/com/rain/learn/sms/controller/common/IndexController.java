@@ -1,4 +1,4 @@
-package com.rain.learn.sms.controller;
+package com.rain.learn.sms.controller.common;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,9 +12,16 @@ public class IndexController extends BaseController {
 
     private static Logger logger = LoggerFactory.getLogger(IndexController.class);
 
-    @RequestMapping(value = { "/index", "/" }, method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String defaultPage(ModelMap model) {
+        logger.debug("request /, redirect to index");
+        return "redirect:/index";
+    }
+
+    // @RequestMapping(value = { "/index", "/" }, method = RequestMethod.GET)
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
     public String showLogin(ModelMap model) {
         logger.debug("request index");
-        return "/index";
+        return "/common/index";
     }
 }

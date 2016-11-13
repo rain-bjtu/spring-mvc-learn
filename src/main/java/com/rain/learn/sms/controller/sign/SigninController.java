@@ -7,16 +7,16 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.rain.learn.sms.controller.BaseController;
+import com.rain.learn.sms.controller.common.BaseController;
 
 
 @Controller
 public class SigninController extends BaseController {
     private static Logger logger = LoggerFactory.getLogger(SigninController.class);
 
-    @RequestMapping(value = "/signin", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String showLogin(ModelMap model) {
-        logger.debug("request signin");
+        logger.debug("request login");
         return "/sign/signin";
     }
 }

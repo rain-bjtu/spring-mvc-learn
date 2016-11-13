@@ -1,11 +1,12 @@
-<%@ include file="../include.jsp"%>
+<%@ include file="../common/include.jsp"%>
+<%@ page isErrorPage="true" %>
 
     <!DOCTYPE html>
     <html>
 
     <head>
         <title>404</title>
-        <%@ include file="../css.jsp" %>
+        <%@ include file="../common/css.jsp" %>
 
     </head>
 

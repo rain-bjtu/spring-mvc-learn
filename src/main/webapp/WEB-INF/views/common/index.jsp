@@ -6,11 +6,12 @@
     <head>
 
         <title>HOME</title>
+        <%@ include file="../common/css.jsp" %>
 
     </head>
 
     <body>
-        <span>haha</span>
+        <h1>haha</h1>
 
 
     </body>

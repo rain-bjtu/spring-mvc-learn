@@ -4,7 +4,7 @@
     <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} --> %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M\(%line\) --> %msg%n</pattern>
         </encoder>
     </appender>
 
@@ -19,7 +19,7 @@
         <append>true</append>
         <encoder>
             <charset>UTF-8</charset>
-            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} --> %msg%n</pattern>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36}.%M\(%line\) --> %msg%n</pattern>
         </encoder>
         <!--
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
@@ -34,7 +34,7 @@
         -->
     </appender>
 
-    <logger name="org.springframework" level="INFO" additivity="false">
+    <logger name="org.springframework" level="DEBUG" additivity="false">
         <appender-ref ref="stdout" />
         <appender-ref ref="daily" />
     </logger>

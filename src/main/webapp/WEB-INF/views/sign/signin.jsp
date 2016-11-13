@@ -1,4 +1,4 @@
-<%@ include file="../include.jsp"%>
+<%@ include file="../common/include.jsp"%>
 
     <!DOCTYPE html>
     <html>
@@ -10,10 +10,10 @@
 
         <title>Sign in - Welcome to my APP</title>
 
-        <%@ include file="../css.jsp"%>
+        <%@ include file="../common/css.jsp"%>
     </head>
 
-    <body>
+    <body OnLoad="document.getElementById('username').focus();">
 
         <!-- Fixed navbar -->
         <div class="navbar navbar-inverse navbar-fixed-top headroom">
@@ -71,11 +71,11 @@
                                 <form action="j_spring_security_check" method="post">
                                     <div class="top-margin">
                                         <label>Username/Email <span class="text-danger">*</span></label>
-                                        <input name="j_username" type="text" class="form-control">
+                                        <input id="username" name="username" type="text" class="form-control">
                                     </div>
                                     <div class="top-margin">
                                         <label>Password <span class="text-danger">*</span></label>
-                                        <input name="j_password" type="password" class="form-control">
+                                        <input id="password" name="password" type="password" class="form-control">
                                     </div>
 
                                     <hr>
@@ -173,7 +173,7 @@
             </div>
         </footer>
 
-        <%@ include file="../js.jsp"%>
+        <%@ include file="../common/js.jsp"%>
     </body>
 
     </html>
