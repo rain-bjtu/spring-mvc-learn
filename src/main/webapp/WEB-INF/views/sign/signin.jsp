@@ -13,7 +13,7 @@
         <%@ include file="../common/css.jsp"%>
     </head>
 
-    <body style="background-image:url(resources/images/bg_header.jpg); opacity:0.9" OnLoad="document.getElementById( 'username').focus();">
+    <body style="background-image:url(resources/images/bg_header.jpg); opacity:0.9" OnLoad="document.getElementById('username').focus();">
 
         <%@ include file="../common/navbar.jsp" %>
 
