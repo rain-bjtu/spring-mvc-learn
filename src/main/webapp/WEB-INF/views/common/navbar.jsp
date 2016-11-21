@@ -34,12 +34,12 @@
                     </a>
                 </li>
                 <li>
-                    <a class="btn" href="<c:url value='/login'/>">
+                    <a class="btn" href="<c:url value='/account/login'/>">
                         <spring:message code="common.sign.in.up" />
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value='/logout'/>">
+                    <a href="<c:url value='/account/logout'/>">
                         <spring:message code="common.logout" />
                     </a>
                 </li>

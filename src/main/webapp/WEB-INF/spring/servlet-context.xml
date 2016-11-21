@@ -8,7 +8,20 @@
 		infrastructure -->
 
     <!-- Enables the Spring MVC @Controller programming model -->
-    <annotation-driven />
+    <annotation-driven validator="validator" conversion-service="conversion-service" />
+
+    <beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+        <beans:property name="providerClass" value="org.hibernate.validator.HibernateValidator" />
+        <!--if not set, will use classpath:ValidationMessages.properties -->
+        <beans:property name="validationMessageSource" ref="validateMessageSource" />
+    </beans:bean>
+    <beans:bean id="conversion-service" class="org.springframework.format.support.FormattingConversionServiceFactoryBean" />
+    <beans:bean id="validateMessageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <beans:property name="basename" value="classpath:validate/message" />
+        <beans:property name="defaultEncoding" value="UTF-8" />
+        <beans:property name="fileEncodings" value="UTF-8" />
+        <beans:property name="cacheSeconds" value="120" />
+    </beans:bean>
 
     <resources mapping="/resources/**" location="/resources/" cache-period="31556926" />
 
@@ -24,19 +37,22 @@
         <!--
     <beans:property name="basename" value="classpath:i18n/text" />
      -->
-
         <beans:property name="basenames">
             <beans:list>
                 <beans:value>classpath:i18n/text</beans:value>
                 <beans:value>classpath:i18n/common</beans:value>
             </beans:list>
         </beans:property>
-        <beans:property name="cacheSeconds" value="60"></beans:property> 
+        <beans:property name="cacheSeconds" value="60"></beans:property>
         <beans:property name="defaultEncoding" value="UTF-8" />
         <beans:property name="fileEncodings" value="UTF-8" />
     </beans:bean>
 
     <interceptors>
+        <!--
+        <mapping path="/**" />
+        <exclude-mapping path="/admin/**" />
+        -->
         <beans:bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
             <beans:property name="paramName" value="locale" />
         </beans:bean>

@@ -19,7 +19,7 @@
 
             <header id="head" class="secondary"></header>
 
-            <div style="background-image:url(resources/images/bg_header.jpg); opacity:0.95; padding-bottom: 60px">
+            <div style="background-image:url(<c:url value='/resources/images/bg_header.jpg' />); opacity:0.95; padding-bottom: 60px">
                 <!-- container -->
                 <div class="container">
 
@@ -45,14 +45,19 @@
                                             register one. </p>
                                         <hr>
 
-                                        <form action="j_spring_security_check" method="post">
+                                        <form:form action="login" method="post" commandName="loginUser">
+                                            <!--
+                                            <form:errors path="*"></form:errors>
+                                            -->
                                             <div class="top-margin">
                                                 <label>Username/Email <span class="text-danger">*</span></label>
-                                                <input id="username" name="username" type="text" class="form-control" autocomplete="off" />
+                                                <form:input path="username" type="text" class="form-control" autocomplete="off" />
+                                                <form:errors path="username" style="color:green"></form:errors><br/>
                                             </div>
                                             <div class="top-margin">
                                                 <label>Password <span class="text-danger">*</span></label>
-                                                <input id="password" name="password" type="password" class="form-control" autocomplete="off" />
+                                                <form:input path="password" type="password" class="form-control" autocomplete="off" />
+                                                <form:errors path="password" style="color:green"></form:errors><br/>
                                             </div>
 
                                             <hr>
@@ -65,7 +70,7 @@
                                                     <button class="btn btn-action" type="submit">Sign in</button>
                                                 </div>
                                             </div>
-                                        </form>
+                                        </form:form>
                                     </div>
                                 </div>
 
