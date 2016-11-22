@@ -16,6 +16,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rain.learn.sms.controller.BaseController;
 import com.rain.learn.sms.vo.LoginUser;
@@ -44,11 +45,40 @@ public class SigninController extends BaseController {
             return showLogin(model);
         }
 
+        return "forward:forward-security-check";
+    }
+
+    /**
+     * this handler method just used to test post forward between two handler method and test RedirectAttributes can
+     * bind to loginUser for redirect
+     * forward --> use post/get
+     * redirect --> use get, and discard request parameters
+     * internal forward will directly forward to other handler method, will not pass to filter, so will not pass to
+     * spring security which use filter
+     * redirect will send 302 to client and then let client send the redirect request, the request will pass to filter
+     * first, and then pass to the right handler method
+     * 
+     * @param model
+     * @param request
+     * @param response
+     * @param loginUser
+     * @throws IOException
+     */
+    @RequestMapping(value = "/forward-security-check", method = { RequestMethod.GET, RequestMethod.POST })
+    public void forLoginForward(ModelMap model, HttpServletRequest request, HttpServletResponse response,
+            @Valid @ModelAttribute("loginUser") LoginUser loginUser) throws IOException {
         String url = "../j_spring_security_check";
         String username = "username";
-        String usernameValue = request.getParameter(username);
+        String usernameValue = loginUser.getUsername();
         String password = "password";
-        String passwordValue = request.getParameter(password);
+        String passwordValue = loginUser.getPassword();
+        // String usernameValue = loginUser.getUsername();
+        // String password = "password";
+        // String passwordValue = loginUser.getPassword();
+        logger.debug("user name is {}", request.getParameter(username));
+        logger.debug("password is {}", request.getParameter(password));
+        logger.debug("user name is {}", loginUser.getUsername());
+        logger.debug("password is {}", loginUser.getPassword());
 
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
@@ -60,6 +90,34 @@ public class SigninController extends BaseController {
         out.println("  document.submit.submit()");
         out.println("</script>");
         logger.debug("post login without error");
-        return null;
+    }
+
+    /**
+     * this handler method used to test RedirectAttributes
+     * when refresh, RedirectAttributes attributes will be removed?
+     * 
+     * @param model
+     * @param request
+     * @param response
+     * @param loginUser
+     * @param result
+     * @param ra
+     * @return
+     * @throws IOException
+     * @throws ServletException
+     */
+    @RequestMapping(value = "/login-test", method = RequestMethod.POST)
+    public String validateLogin(ModelMap model, HttpServletRequest request, HttpServletResponse response,
+            @Valid @ModelAttribute("loginUser") LoginUser loginUser, BindingResult result, RedirectAttributes ra)
+            throws IOException, ServletException {
+
+        if (result.hasErrors()) {
+            logger.debug("post login with error occur");
+            return showLogin(model);
+        }
+
+        ra.addFlashAttribute("loginUser", loginUser);
+
+        return "redirect:forward-security-check";
     }
 }
