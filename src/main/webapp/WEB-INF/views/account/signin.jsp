@@ -45,7 +45,7 @@
                                             register one. </p>
                                         <hr>
 
-                                        <form:form action="login" method="post" commandName="loginUser">
+                                        <form:form action="login" method="post" modelAttribute="loginUser">
                                             <!--
                                             <form:errors path="*"></form:errors>
                                             -->
