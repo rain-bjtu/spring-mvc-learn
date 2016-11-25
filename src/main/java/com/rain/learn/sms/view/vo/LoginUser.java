@@ -1,4 +1,4 @@
-package com.rain.learn.sms.vo;
+package com.rain.learn.sms.view.vo;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -6,11 +6,11 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class LoginUser {
 
     @NotEmpty(message = "{username.not.empty}")
-    @Length(min = 1, max = 30, message = "{username.length.limitation}")
+    @Length(min = 1, max = 100, message = "{username.length.limitation}")
     private String username;
 
     @NotEmpty(message = "{password.not.empty}")
-    @Length(min = 1, max = 10, message = "{password.length.limitation}")
+    @Length(min = 1, max = 20, message = "{password.length.limitation}")
     private String password;
 
     public String getUsername() {
