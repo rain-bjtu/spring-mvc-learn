@@ -35,32 +35,26 @@ public abstract class TagUtil {
         if (notEmpty != null) {
             rule.append("required:true");
             text = notEmpty.message();
-            logger.debug("not empty message: {}", text);
-            message.append(context.getMessage(text.substring(1, text.length() - 1)));
+            message.append("required:\"").append(context.getMessage(text.substring(1, text.length() - 1))).append("\"");
             hasAnnotation = true;
         }
         Length length = field.getAnnotation(Length.class);
         if (length != null) {
-            if (hasAnnotation) {
-                rule.append(",");
-                message.append(",");
-            }
+            needSeparate(hasAnnotation, rule, message);
             rule.append("rangelength:[").append(length.min()).append(",").append(length.max()).append("]");
             text = length.message();
-            logger.debug("length message: {}", text);
-            message.append(context.getMessage(text.substring(1, text.length() - 1)));
+            message.append("rangelength:\"")
+                    .append(context.getMessage(text.substring(1, text.length() - 1))
+                            .replaceFirst("\\{min\\}", String.valueOf(length.min()))
+                            .replaceFirst("\\{max\\}", String.valueOf(length.max()))).append("\"");
             hasAnnotation = true;
         }
         Email email = field.getAnnotation(Email.class);
         if (email != null) {
-            if (hasAnnotation) {
-                rule.append(",");
-                message.append(",");
-            }
+            needSeparate(hasAnnotation, rule, message);
             rule.append("email:true");
             text = email.message();
-            logger.debug("email message: {}", text);
-            message.append(context.getMessage(text.substring(1, text.length() - 1)));
+            message.append("email:\"").append(context.getMessage(text.substring(1, text.length() - 1))).append("\"");
             hasAnnotation = true;
         }
         rule.append("}");
@@ -71,7 +65,15 @@ public abstract class TagUtil {
         Map<Validate, String> map = new HashMap<>();
         map.put(RULE, rule.toString());
         map.put(MESSAGE, message.toString());
+        logger.debug("map: {}", map.toString());
         return map;
+    }
+
+    private static void needSeparate(boolean append, StringBuilder rule, StringBuilder message) {
+        if (append) {
+            rule.append(",");
+            message.append(",");
+        }
     }
 
     public static Map<Validate, String> genTagRulesAndMessages(Field[] fields, String rAppend, String mAppend,
@@ -86,20 +88,14 @@ public abstract class TagUtil {
         for (Field field : fields) {
             temp = genTagRuleAndMessage(field, context);
             if (!temp.isEmpty()) {
-                if (hasRule) {
-                    rules.append(",");
-                    messages.append(",");
-                }
+                needSeparate(hasRule, rules, messages);
                 rules.append(temp.get(RULE));
                 messages.append(temp.get(MESSAGE));
                 hasRule = true;
             }
         }
         if (StringUtil.notEmpty(rAppend, mAppend)) {
-            if (hasRule) {
-                rules.append(",");
-                messages.append(",");
-            }
+            needSeparate(hasRule, rules, messages);
             rules.append(rAppend);
             messages.append(mAppend);
             hasRule = true;

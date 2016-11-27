@@ -22,4 +22,10 @@ public class StringTest {
         System.out.println("abc".substring(0, 0));
     }
 
+    @Test
+    public void testReplace() {
+        String a = "a{ba}bi";
+        System.out.println(a.replaceFirst("\\{ba\\}", "we"));
+    }
+
 }

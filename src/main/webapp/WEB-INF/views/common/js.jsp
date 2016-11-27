@@ -3,6 +3,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="<c:url value='/resources/js/jquery-3.1.1.min.js' />"></script>
 <script src="<c:url value='/resources/js/bootstrap.min.js' />"></script>
+<script src="<c:url value='/resources/js/jquery.validate.min.js' />"></script>
 <script src="<c:url value='/resources/js/headroom.min.js' />"></script>
 <script src="<c:url value='/resources/js/jQuery.headroom.min.js' />"></script>
 <script src="<c:url value='/resources/js/template.js' />"></script>
@@ -30,7 +31,7 @@
 
     function pageActive() {
         var home = "learn/index";
-        var login = "learn/login";
+        var login = "account/login";
         var about = "learn/about";
         var contact = "learn/contact";
         if (location.href.indexOf(home) > 0) {

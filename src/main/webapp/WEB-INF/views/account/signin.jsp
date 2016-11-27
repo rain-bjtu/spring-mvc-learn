@@ -91,5 +91,6 @@
             <%@ include file="../common/footer.jsp" %>
                 <%@ include file="../common/js.jsp" %>
     </body>
+    <vali:common modelAttribute="loginUser"></vali:common>
 
     </html>

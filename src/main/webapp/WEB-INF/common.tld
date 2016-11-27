@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<description>common validate</description>
+	<tlib-version>1.0</tlib-version>
+	<short-name>vali</short-name>
+	<uri>http://www.rain-learn.org/tags/common</uri>
+
+	<tag>
+		<description>common tag</description>
+		<name>common</name>
+		<tag-class>com.rain.learn.sms.view.tags.CommonTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>Path to property for data binding</description>
+			<name>modelAttribute</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+</taglib>
