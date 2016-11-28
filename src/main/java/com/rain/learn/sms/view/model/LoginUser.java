@@ -1,4 +1,4 @@
-package com.rain.learn.sms.view.vo;
+package com.rain.learn.sms.view.model;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;

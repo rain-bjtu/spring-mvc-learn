@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.rain.learn.sms.controller.BaseController;
-import com.rain.learn.sms.view.vo.LoginUser;
+import com.rain.learn.sms.view.model.LoginUser;
 
 @Controller
 @RequestMapping(value = "/account")
