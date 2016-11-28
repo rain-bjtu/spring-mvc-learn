@@ -90,7 +90,44 @@
 
             <%@ include file="../common/footer.jsp" %>
                 <%@ include file="../common/js.jsp" %>
+    <!--
+    <script type="text/javascript">
+    $(function(){
+        var validate = $("#loginUser").validate({
+            debug: true, 
+            focusInvalid: false,
+            onkeyup: false,   
+            submitHandler: function(form){ 
+                alert("abc");   
+                form.submit(); 
+            },   
+            
+            rules:{
+                username:{
+                    required:true
+                },
+                password:{
+                    required:true,
+                    rangelength:[3,10]
+                }
+            },
+            messages:{
+                username:{
+                    required:"required"
+                },
+                password:{
+                    required: "required",
+                    //rangelength: $.validator.format("password min:{0}, max:{1}")
+                    rangelength: "<spring:message code="password.length.limitation" />"
+                }
+            }
+                      
+        });    
+
+    });
+    </script>
+    -->
+    <vali:common modelAttribute="loginUser"/>
     </body>
-    <vali:common modelAttribute="loginUser"></vali:common>
 
     </html>
