@@ -30,7 +30,9 @@ public class SigninController extends BaseController {
     public String showLogin(ModelMap model) {
         logger.debug("request login");
         if (!model.containsAttribute("loginUser")) {
-            model.addAttribute("loginUser", new LoginUser());
+            LoginUser user = new LoginUser();
+            logger.debug("request login: {}", user);
+            model.addAttribute("loginUser", user);
         }
         return "account/signin";
     }
@@ -40,6 +42,7 @@ public class SigninController extends BaseController {
             @Valid @ModelAttribute("loginUser") LoginUser loginUser, BindingResult result) throws IOException,
             ServletException {
 
+        logger.debug("user: {} want to login", loginUser);
         if (result.hasErrors()) {
             logger.debug("post login with error occur");
             return showLogin(model);
@@ -75,8 +78,6 @@ public class SigninController extends BaseController {
         // String usernameValue = loginUser.getUsername();
         // String password = "password";
         // String passwordValue = loginUser.getPassword();
-        logger.debug("user name is {}", request.getParameter(username));
-        logger.debug("password is {}", request.getParameter(password));
         logger.debug("user name is {}", loginUser.getUsername());
         logger.debug("password is {}", loginUser.getPassword());
 

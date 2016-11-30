@@ -13,6 +13,8 @@ public class LoginUser {
     @Length(min = 1, max = 20, message = "{password.length.limitation}")
     private String password;
 
+    private boolean rememberMe;
+
     public String getUsername() {
         return username;
     }
@@ -27,6 +29,19 @@ public class LoginUser {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isRememberMe() {
+        return rememberMe;
+    }
+
+    public void setRememberMe(boolean rememberMe) {
+        this.rememberMe = rememberMe;
+    }
+
+    @Override
+    public String toString() {
+        return "LoginUser [username=" + username + ", password=" + password + ", rememberMe=" + rememberMe + "]";
     }
 
 }

@@ -59,6 +59,10 @@
                                                 <form:input path="password" type="password" class="form-control" autocomplete="off" />
                                                 <form:errors path="password" style="color:green"></form:errors><br/>
                                             </div>
+                                            <div class="top-margin">
+                                                <form:checkbox path="rememberMe" />
+                                                <label for="rememberMe">Remember Me?</label>
+                                            </div>
 
                                             <hr>
 
