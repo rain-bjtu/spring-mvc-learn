@@ -14,7 +14,7 @@
         <intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
         <form-login login-page="/account/login" login-processing-url="/login" username-parameter="username" password-parameter="password"
-            default-target-url="/index" authentication-failure-url="/login?error=1" always-use-default-target="true" />
+            default-target-url="/index" authentication-failure-url="/login?error=1" />
         <logout invalidate-session="true" logout-url="/account/logout" logout-success-url="/account/login" />
         <!--
         <remember-me key="spring-security-learn" remember-me-parameter="rememberMe"/>
@@ -24,6 +24,7 @@
         <!-- -->
         <csrf disabled="true" />
     </http>
+    <!--
     <authentication-manager alias="authenticationManager" erase-credentials="false">
         <authentication-provider>
             <user-service id="userService">
@@ -31,6 +32,23 @@
             </user-service>
         </authentication-provider>
     </authentication-manager>
+    -->
+
+    <authentication-manager alias="authenticationManager" erase-credentials="false">
+        <authentication-provider user-service-ref="userService"/>
+    </authentication-manager>
+
+    <beans:bean class="org.springframework.security.provisioning.InMemoryUserDetailsManager" id="userService">
+        <!--  -->
+        <beans:property name="authenticationManager" ref="authenticationManager"/>
+
+        <beans:constructor-arg name="users">
+			<beans:props>
+				<beans:prop key="t">t,ROLE_USER</beans:prop>
+			</beans:props>
+		</beans:constructor-arg>
+    </beans:bean>
+
 	<beans:bean class="com.rain.learn.sms.service.impl.IPTokenBasedRememberMeServicesImpl" id="ipTokenBasedRememberMeServices">
 	    <beans:constructor-arg name="key" value="spring-security-learn"/>
 	    <beans:constructor-arg name="userDetailsService" ref="userService"/>

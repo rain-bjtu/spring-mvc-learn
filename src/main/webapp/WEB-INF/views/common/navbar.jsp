@@ -26,6 +26,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="<c:url value='/home/a'/>">A Page</a></li>
                         <li><a href="<c:url value='/home/b'/>">B Page</a></li>
+                        <li><a href="<c:url value='/account/change-password'/>">Chang Password</a></li>
                     </ul>
                 </li>
                 <li>
