@@ -59,9 +59,15 @@ public class IPTokenBasedRememberMeServicesImpl extends TokenBasedRememberMeServ
     @Override
     protected void setCookie(String[] tokens, int maxAge, HttpServletRequest request, HttpServletResponse response) {
         // append the IP adddress to the cookie
+        for (String s : tokens) {
+            logger.debug("origin tokens: {}", s);
+        }
         String[] tokensWithIPAddress = Arrays.copyOf(tokens, tokens.length + 1);
         tokensWithIPAddress[tokensWithIPAddress.length - 1] = getUserIPAddress(request);
         logger.info("333333333333333333333333333");
+        for (String s : tokensWithIPAddress) {
+            logger.debug("add ip tokens: {}", s);
+        }
         super.setCookie(tokensWithIPAddress, maxAge, request, response);
     }
 

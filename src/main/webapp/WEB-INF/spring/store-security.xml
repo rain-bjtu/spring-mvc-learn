@@ -17,10 +17,10 @@
             default-target-url="/index" authentication-failure-url="/login?error=1" always-use-default-target="true" />
         <logout invalidate-session="true" logout-url="/account/logout" logout-success-url="/account/login" />
         <!--
-        <remember-me key="spring-security-learn" services-ref="ipTokenBasedRememberMeServices"/>
+        <remember-me key="spring-security-learn" remember-me-parameter="rememberMe"/>
         -->
         <!-- -->
-        <remember-me key="spring-security-learn" remember-me-parameter="rememberMe"/>
+        <remember-me key="spring-security-learn" services-ref="ipTokenBasedRememberMeServices"/>
         <!-- -->
         <csrf disabled="true" />
     </http>
@@ -41,6 +41,6 @@
 		<beans:property name="userDetailsService" ref="userService" />
 		-->
 		<beans:property name="parameter" value="rememberMe"/>
-        <beans:property name="cookieName" value="REMEMBER_ME"/>
+        <beans:property name="cookieName" value="remember-me"/>
 	</beans:bean>
 </beans:beans>
