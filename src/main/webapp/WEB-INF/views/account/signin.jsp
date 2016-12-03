@@ -44,8 +44,9 @@
                                         <p class="text-center text-muted">If you don't have an account, click &quot;<a href="signup">Register</a>&quot; to
                                             register one. </p>
                                         <hr>
+                                        <c:url value="/login" var="loginUrl"/>
 
-                                        <form:form action="login" method="post" modelAttribute="loginUser">
+                                        <form:form action="${loginUrl}" method="post" modelAttribute="loginUser">
                                             <!--
                                             <form:errors path="*"></form:errors>
                                             -->
@@ -59,10 +60,14 @@
                                                 <form:input path="password" type="password" class="form-control" autocomplete="off" />
                                                 <form:errors path="password" style="color:green"></form:errors><br/>
                                             </div>
+                                             
                                             <div class="top-margin">
                                                 <form:checkbox path="rememberMe" />
                                                 <label for="rememberMe">Remember Me?</label>
                                             </div>
+                                            <!-- 
+                                            <input id="rememberMe" name="rememberMe" type="checkbox"/>Remember Me
+                                            -->
 
                                             <hr>
 

@@ -13,13 +13,15 @@
         <intercept-url pattern="/account/**" access="hasRole('ROLE_USER') and fullyAuthenticated" />
         <intercept-url pattern="/resources/**" access="permitAll" />
         <intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
-        <form-login login-page="/account/login" login-processing-url="/j_spring_security_check" username-parameter="username" password-parameter="password"
+        <form-login login-page="/account/login" login-processing-url="/login" username-parameter="username" password-parameter="password"
             default-target-url="/index" authentication-failure-url="/login?error=1" always-use-default-target="true" />
         <logout invalidate-session="true" logout-url="/account/logout" logout-success-url="/account/login" />
         <!--
         <remember-me key="spring-security-learn" services-ref="ipTokenBasedRememberMeServices"/>
         -->
+        <!-- -->
         <remember-me key="spring-security-learn" remember-me-parameter="rememberMe"/>
+        <!-- -->
         <csrf disabled="true" />
     </http>
     <authentication-manager alias="authenticationManager" erase-credentials="false">

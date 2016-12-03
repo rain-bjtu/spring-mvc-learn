@@ -37,19 +37,19 @@ public class SigninController extends BaseController {
         return "account/signin";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String validateLogin(ModelMap model, HttpServletRequest request, HttpServletResponse response,
-            @Valid @ModelAttribute("loginUser") LoginUser loginUser, BindingResult result) throws IOException,
-            ServletException {
-
-        logger.debug("user: {} want to login", loginUser);
-        if (result.hasErrors()) {
-            logger.debug("post login with error occur");
-            return showLogin(model);
-        }
-
-        return "forward:forward-security-check";
-    }
+//    @RequestMapping(value = "/login", method = RequestMethod.POST)
+//    public String validateLogin(ModelMap model, HttpServletRequest request, HttpServletResponse response,
+//            @Valid @ModelAttribute("loginUser") LoginUser loginUser, BindingResult result) throws IOException,
+//            ServletException {
+//
+//        logger.debug("user: {} want to login", loginUser);
+//        if (result.hasErrors()) {
+//            logger.debug("post login with error occur");
+//            return showLogin(model);
+//        }
+//
+//        return "forward:forward-security-check";
+//    }
 
     /**
      * this handler method just used to test post forward between two handler method and test RedirectAttributes can
@@ -80,12 +80,14 @@ public class SigninController extends BaseController {
         // String passwordValue = loginUser.getPassword();
         logger.debug("user name is {}", loginUser.getUsername());
         logger.debug("password is {}", loginUser.getPassword());
+        logger.debug("remember-me is {}", loginUser.isRememberMe());
 
         response.setContentType("text/html;charset=utf-8");
         PrintWriter out = response.getWriter();
         out.println("<form name='submit' method='post'  action='" + url + "' >");
         out.println("<input type='hidden' name='" + username + "' value='" + usernameValue + "'>");
         out.println("<input type='hidden' name='" + password + "' value='" + passwordValue + "'>");
+        out.println("<input type='hidden' name='" + "rememberMe" + "' value='" + loginUser.isRememberMe() + "'>");
         out.println("</form>");
         out.println("<script>");
         out.println("  document.submit.submit()");
