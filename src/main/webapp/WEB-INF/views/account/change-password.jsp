@@ -86,6 +86,39 @@
 
             <%@ include file="../common/footer.jsp" %>
                 <%@ include file="../common/js.jsp" %>
+    <script type="text/javascript">
+    $(function(){
+        var validate = $("#changePassword").validate({
+            onkeyup: true,   
+            rules:{
+            	oldPassword:{
+                    required:true,
+                    rangelength:[1,10]
+                },
+                newPassword:{
+                    required:true,
+                    rangelength:[1,10]
+                },
+                confirmPassword:{
+                	equalTo:"#newPassword"
+                }
+            },
+            messages:{
+            	oldPassword:{
+            		required: "<spring:message code="password.not.empty" />",
+                    rangelength: "<spring:message code="password.length.limitation" />"
+                },
+                newPassword:{
+                    required: "<spring:message code="password.not.empty" />",
+                    rangelength: "<spring:message code="password.length.limitation" />"
+                },
+                confirmPassword:{
+                	equalTo: "<spring:message code="password.confirm.equal" />"
+                }
+            }
+        });    
+    });
+    </script>
     </body>
 
     </html>
