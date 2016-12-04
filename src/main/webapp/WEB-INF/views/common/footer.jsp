@@ -46,11 +46,11 @@
                 <div class="col-md-6 widget">
                     <div class="widget-body">
                         <p class="simplenav">
-                            <a href="<c:url value='/index'/>">Home</a> |
-                            <a href="<c:url value='/about'/>">About</a> |
-                            <a href="<c:url value='/home/b'/>">Sidebar</a> |
-                            <a href="<c:url value='/contact'/>">Contact</a> |
-                            <b><a href="signup">Sign up</a></b>
+                            <a href="${indexUrl }">Home</a> |
+                            <a href="${aboutUrl }">About</a> |
+                            <a href="${homeBUrl }">Sidebar</a> |
+                            <a href="${contactUrl }">Contact</a> |
+                            <b><a href="${signupUrl }">Sign up</a></b>
                         </p>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                 <div class="col-md-6 widget">
                     <div class="widget-body">
                         <p class="text-right">
-                            Copyright &copy; 2016, Flysnow. Designed by <a href="<c:url value='/index'/>" rel="designer">Rain</a>
+                            Copyright &copy; 2016, Flysnow. Designed by <a href="${indexUrl }" rel="designer">Rain</a>
                         </p>
                     </div>
                 </div>

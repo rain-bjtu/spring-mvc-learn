@@ -6,17 +6,17 @@
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="<c:url value='/index'/>"><img src="<c:url value='/resources/images/logo.png' />" alt="home logo"></a>
+            <a class="navbar-brand" href="${indexUrl }"><img src="${logoUrl }" alt="home logo"></a>
         </div>
         <div class="navbar-collapse collapse">
             <ul id="navbar-active" class="nav navbar-nav pull-right">
                 <li>
-                    <a href="<c:url value='/index'/>">
+                    <a href="${indexUrl }">
                         <spring:message code="common.home" />
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value='/about'/>">
+                    <a href="${aboutUrl }">
                         <spring:message code="common.about" />
                     </a>
                 </li>
@@ -24,23 +24,23 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <spring:message code="common.more.pages" /><b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<c:url value='/home/a'/>">A Page</a></li>
-                        <li><a href="<c:url value='/home/b'/>">B Page</a></li>
-                        <li><a href="<c:url value='/account/change-password'/>">Chang Password</a></li>
+                        <li><a href="${homeAUrl }">A Page</a></li>
+                        <li><a href="${homeBUrl }">B Page</a></li>
+                        <li><a href="${changePasswordUrl }">Chang Password</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="<c:url value='/contact'/>">
+                    <a href="${contactUrl }">
                         <spring:message code="common.contact" />
                     </a>
                 </li>
                 <li>
-                    <a class="btn" href="<c:url value='/account/login'/>">
+                    <a class="btn" href="${loginUrl }">
                         <spring:message code="common.sign.in.up" />
                     </a>
                 </li>
                 <li>
-                    <a href="<c:url value='/account/logout'/>">
+                    <a href="${logoutUrl }">
                         <spring:message code="common.logout" />
                     </a>
                 </li>

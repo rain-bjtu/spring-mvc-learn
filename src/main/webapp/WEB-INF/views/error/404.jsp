@@ -14,7 +14,7 @@
         <div class="container">
             <div class="row" style="padding: 80px 0px 160px; color: #999999;">
                 <div class="col-md-3">
-                    <img alt="" height="196" width="297" src="<c:url value='/resources/images/404.png' />">
+                    <img alt="" height="196" width="297" src="${e404Url }">
                 </div>
                 <div class="col-md-7">
                     <h2>Sorry, the page you are looking for does not exist.</h2>

@@ -18,12 +18,12 @@
 
             <header id="head" class="secondary"></header>
 
-            <div style="background-image:url(<c:url value='/resources/images/bg_header.jpg' />); opacity:0.95; padding-bottom: 60px">
+            <div style="background-image:url(${bodyBGUrl}); opacity:0.95; padding-bottom: 60px">
                 <!-- container -->
                 <div class="container">
 
                     <ol class="breadcrumb">
-                        <li><a href="<c:url value='/index' />">Home</a>
+                        <li><a href="${indexUrl }">Home</a>
                         </li>
                         <li class="active">Change password</li>
                     </ol>
@@ -41,7 +41,6 @@
                                     <div class="panel-body">
                                         <h3 class="thin text-center">Change your password</h3>
                                         <hr>
-                                        <c:url value="/account/change-password" var="changePasswordUrl" />
 
                                         <form id="changePassword" action="${changePasswordUrl}" method="post">
                                             <div class="top-margin">

@@ -19,12 +19,12 @@
 
             <header id="head" class="secondary"></header>
 
-            <div style="background-image:url(<c:url value='/resources/images/bg_header.jpg' />); opacity:0.95; padding-bottom: 60px">
+            <div style="background-image:url(${bodyBGUrl}); opacity:0.95; padding-bottom: 60px">
                 <!-- container -->
                 <div class="container">
 
                     <ol class="breadcrumb">
-                        <li><a href="<c:url value='/index' />">Home</a>
+                        <li><a href="${indexUrl }">Home</a>
                         </li>
                         <li class="active">User access</li>
                     </ol>
@@ -44,9 +44,8 @@
                                         <p class="text-center text-muted">If you don't have an account, click &quot;<a href="signup">Register</a>&quot; to
                                             register one. </p>
                                         <hr>
-                                        <c:url value="/login" var="loginUrl"/>
 
-                                        <form:form action="${loginUrl}" method="post" modelAttribute="loginUser">
+                                        <form:form action="${authUrl}" method="post" modelAttribute="loginUser">
                                             <!--
                                             <form:errors path="*"></form:errors>
                                             -->
