@@ -7,7 +7,7 @@
     <!-- DispatcherServlet Context: defines this servlet's request-processing
 		infrastructure -->
 
-    <!-- Enables the Spring MVC @Controller programming model -->
+    <!-- Enables the Spring MVC @Controller programming model, i.e. regist request HandlerMapping and HandlerAdapter -->
     <annotation-driven validator="validator" conversion-service="conversion-service" />
 
     <beans:bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">

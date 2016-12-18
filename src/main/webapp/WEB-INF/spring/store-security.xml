@@ -35,10 +35,10 @@
     -->
 
     <authentication-manager alias="authenticationManager" erase-credentials="false">
-        <authentication-provider user-service-ref="userService"/>
+        <authentication-provider user-service-ref="userIMService"/>
     </authentication-manager>
 
-    <beans:bean class="org.springframework.security.provisioning.InMemoryUserDetailsManager" id="userService">
+    <beans:bean class="org.springframework.security.provisioning.InMemoryUserDetailsManager" id="userIMService">
         <!--  -->
         <beans:property name="authenticationManager" ref="authenticationManager"/>
 
@@ -51,7 +51,7 @@
 
 	<beans:bean class="com.rain.learn.sms.service.impl.IPTokenBasedRememberMeServicesImpl" id="ipTokenBasedRememberMeServices">
 	    <beans:constructor-arg name="key" value="spring-security-learn"/>
-	    <beans:constructor-arg name="userDetailsService" ref="userService"/>
+	    <beans:constructor-arg name="userDetailsService" ref="userIMService"/>
 	    <!--
 		<beans:property name="key">
 			<beans:value>spring-security-learn</beans:value>

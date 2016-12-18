@@ -1,0 +1,51 @@
+DROP DATABASE IF EXISTS test;
+
+CREATE DATABASE test
+  DEFAULT CHARACTER SET utf8
+  COLLATE utf8_general_ci;
+
+USE test;
+
+SET foreign_key_checks = 0;
+
+CREATE TABLE groups (
+  id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name VARCHAR(30) NOT NULL UNIQUE,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+CREATE TABLE authorities (
+  id TINYINT UNSIGNED NOT NULL AUTO_INCREMENT,
+  authority VARCHAR(30) NOT NULL UNIQUE,
+  PRIMARY KEY (id)
+) AUTO_INCREMENT=1;
+
+CREATE TABLE group_authorities (
+  group_id TINYINT UNSIGNED NOT NULL,
+  authority_id TINYINT UNSIGNED NOT NULL,
+  PRIMARY KEY (group_id, authority_id),
+  CONSTRAINT fk_ga_group FOREIGN KEY (group_id)
+    REFERENCES groups (id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+  CONSTRAINT fk_ga_authority FOREIGN KEY (authority_id)
+    REFERENCES authorities (id)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
+CREATE TABLE users (
+  id INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50) NOT NULL UNIQUE,
+  password CHAR(100) NOT NULL,
+  regist_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  group_id TINYINT UNSIGNED,
+  PRIMARY KEY (id),
+  CONSTRAINT fk_user_group FOREIGN KEY (group_id)
+    REFERENCES groups (id)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
+) AUTO_INCREMENT=1;
+
+
+SET foreign_key_checks = 1;
