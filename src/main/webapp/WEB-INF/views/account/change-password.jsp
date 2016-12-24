@@ -92,7 +92,17 @@
             rules:{
             	oldPassword:{
                     required:true,
-                    rangelength:[1,10]
+                    rangelength:[1,10],
+                    remote: {
+                        url: "${checkPasswordUrl}",
+                        type: "post",
+                        dataType: "json", 
+                        data: {
+                            password: function() {
+                                return $("#oldPassword").val();
+                            }
+                        }
+                    }
                 },
                 newPassword:{
                     required:true,
@@ -105,7 +115,8 @@
             messages:{
             	oldPassword:{
             		required: "<spring:message code="password.not.empty" />",
-                    rangelength: "<spring:message code="password.length.limitation" />"
+                    rangelength: "<spring:message code="password.length.limitation" />",
+                    remote: "<spring:message code="password.not.correct" />"
                 },
                 newPassword:{
                     required: "<spring:message code="password.not.empty" />",

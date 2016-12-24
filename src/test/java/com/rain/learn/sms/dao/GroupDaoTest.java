@@ -44,6 +44,7 @@ public class GroupDaoTest extends AbstractTest {
         groupDao.delete(group);
     }
 
+    @Ignore
     @Test
     @Commit
     public void testSaveUser() {
@@ -57,6 +58,7 @@ public class GroupDaoTest extends AbstractTest {
         // groupDao.save(group);
     }
 
+    @Ignore
     @Test
     @Commit
     public void testSaveAuthority() {

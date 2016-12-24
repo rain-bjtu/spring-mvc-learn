@@ -1,5 +1,6 @@
 package com.rain.learn.sms.dao;
 
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ public class AuthorityDaoTest extends AbstractTest {
     @Autowired
     private AuthorityDao authorityDao;
 
+    @Ignore
     @Test
     public void testPrintAuthority() {
         AuthorityEbo authority = authorityDao.getByKey(1);

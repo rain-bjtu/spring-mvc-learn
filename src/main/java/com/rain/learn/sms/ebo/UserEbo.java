@@ -126,7 +126,7 @@ public class UserEbo implements Serializable {
 
     @Override
     public String toString() {
-        return "UserEbo [id=" + id + ", name=" + name + ", password=" + password + ", registTime=" + registTime + "]";
+        return "UserEbo [id=" + id + ", name=" + name + ", registTime=" + registTime + "]";
     }
 
 }

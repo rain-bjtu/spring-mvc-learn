@@ -21,7 +21,7 @@ public class UserDaoTest extends AbstractTest {
     @Autowired
     private UserDao userDao;
 
-    // @Ignore
+    @Ignore
     @Test
     public void testDeleteUser() {
         printExistUsers();
@@ -55,9 +55,20 @@ public class UserDaoTest extends AbstractTest {
     }
 
     @Test
+    @Ignore
     public void testPrintGroupFromUser() {
         UserEbo user = userDao.getByKey(1);
         System.out.println(user);
         System.out.println(user.getGroup());
+    }
+
+    /**
+     * throw javax.persistence.NoResultException
+     */
+    @Test
+    @Ignore
+    public void testNoExistUser() {
+        UserEbo user = userDao.queryByName("abcd");
+        System.out.println(user);
     }
 }

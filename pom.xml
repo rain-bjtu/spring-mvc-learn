@@ -19,6 +19,8 @@
         <hibernate.version>5.2.5.Final</hibernate.version>
         <mysql.version>6.0.5</mysql.version>
 
+        <jackson.version>2.7.7</jackson.version>
+
         <junit.version>4.12</junit.version>
     </properties>
     <dependencies>
@@ -150,6 +152,18 @@
             <version>1.7.12</version>
         </dependency>
 
+        <!-- used for json converter to/from object -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
 
         <!-- Unit Test -->
         <dependency>

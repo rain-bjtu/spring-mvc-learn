@@ -5,7 +5,7 @@
     <html>
 
     <head>
-        <title>404</title>
+        <title>500</title>
         <%@ include file="../common/css.jsp" %>
 
     </head>
@@ -14,10 +14,10 @@
         <div class="container">
             <div class="row" style="padding: 80px 0px 160px; color: #999999;">
                 <div class="col-md-3">
-                    <img alt="" height="196" width="297" src="${error404pngUrl }">
+                    <img alt="" height="196" width="297" src="${error500pngUrl }">
                 </div>
                 <div class="col-md-7">
-                    <h2>Sorry, the page you are looking for does not exist.</h2>
+                    <h2>Sorry, there is something wrong with the server.</h2>
                 </div>
             </div>
         </div>
