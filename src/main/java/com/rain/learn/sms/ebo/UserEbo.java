@@ -2,14 +2,18 @@ package com.rain.learn.sms.ebo;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -84,13 +88,23 @@ public class UserEbo implements Serializable {
         this.group = group;
     }
 
+    @OneToMany(targetEntity = TokenEbo.class, fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
+    private Set<TokenEbo> tokens;
+
+    public Set<TokenEbo> getTokens() {
+        return tokens;
+    }
+
+    public void setTokens(Set<TokenEbo> tokens) {
+        this.tokens = tokens;
+    }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
         result = prime * result + id;
         result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((password == null) ? 0 : password.hashCode());
         result = prime * result + ((registTime == null) ? 0 : registTime.hashCode());
         return result;
     }
@@ -110,11 +124,6 @@ public class UserEbo implements Serializable {
             if (other.name != null)
                 return false;
         } else if (!name.equals(other.name))
-            return false;
-        if (password == null) {
-            if (other.password != null)
-                return false;
-        } else if (!password.equals(other.password))
             return false;
         if (registTime == null) {
             if (other.registTime != null)

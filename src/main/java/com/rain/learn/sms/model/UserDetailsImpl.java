@@ -3,26 +3,23 @@ package com.rain.learn.sms.model;
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-public class UserAuthorityDetailsImpl implements UserAuthorityDetails {
+public class UserDetailsImpl implements UserDetails {
     private static final long serialVersionUID = 8966066174780560084L;
 
-    private int id;
     private String username;
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
+    private boolean accountNonExpired = true;
+    private boolean accountNonLocked = true;
+    private boolean credentialsNonExpired = true;
+    private boolean enabled = true;
 
-    public UserAuthorityDetailsImpl(int id, String username, String password,
-            Collection<? extends GrantedAuthority> authorities) {
-        this.id = id;
+    public UserDetailsImpl(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         this.username = username;
         this.password = password;
         this.authorities = authorities;
-    }
-
-    @Override
-    public int getId() {
-        return id;
     }
 
     @Override
@@ -42,26 +39,22 @@ public class UserAuthorityDetailsImpl implements UserAuthorityDetails {
 
     @Override
     public boolean isAccountNonExpired() {
-        return false;
+        return accountNonExpired;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return false;
+        return accountNonLocked;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false;
+        return credentialsNonExpired;
     }
 
     @Override
     public boolean isEnabled() {
-        return false;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+        return enabled;
     }
 
     public void setUsername(String username) {
@@ -75,4 +68,21 @@ public class UserAuthorityDetailsImpl implements UserAuthorityDetails {
     public void setAuthorities(Collection<? extends GrantedAuthority> authorities) {
         this.authorities = authorities;
     }
+
+    public void setAccountNonExpired(boolean accountNonExpired) {
+        this.accountNonExpired = accountNonExpired;
+    }
+
+    public void setAccountNonLocked(boolean accountNonLocked) {
+        this.accountNonLocked = accountNonLocked;
+    }
+
+    public void setCredentialsNonExpired(boolean credentialsNonExpired) {
+        this.credentialsNonExpired = credentialsNonExpired;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
+    }
+
 }

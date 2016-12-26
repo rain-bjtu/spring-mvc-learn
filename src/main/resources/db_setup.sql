@@ -47,5 +47,17 @@ CREATE TABLE users (
     ON UPDATE CASCADE
 ) AUTO_INCREMENT=1;
 
+CREATE TABLE token (
+  series VARCHAR(64) NOT NULL,
+  username VARCHAR(50) NOT NULL,
+  token VARCHAR(64) NOT NULL,
+  last_used TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (series),
+  CONSTRAINT fk_token_user FOREIGN KEY (username)
+    REFERENCES users (name)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE
+);
+
 
 SET foreign_key_checks = 1;

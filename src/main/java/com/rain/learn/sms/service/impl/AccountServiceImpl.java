@@ -59,11 +59,11 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public UserEbo getCurrentUser() {
-        int id = loginService.getLoggedInUser().getId();
-        UserEbo user = userDao.getByKey(id);
-        if (user == null) {
+        String name = loginService.getLoggedInUser().getUsername();
+        try {
+            return userDao.queryByName(name);
+        } catch (Exception e) {
             throw new IllegalStateException("Current user doesn't exist in database.");
         }
-        return user;
     }
 }

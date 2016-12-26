@@ -1,9 +1,10 @@
 package com.rain.learn.sms.service;
 
-import com.rain.learn.sms.ebo.UserEbo;
-import com.rain.learn.sms.model.UserAuthorityDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-public interface UserService {
+import com.rain.learn.sms.ebo.UserEbo;
+
+public interface UserService extends UserDetailsService {
 
     void save(UserEbo user);
 
@@ -14,6 +15,4 @@ public interface UserService {
     UserEbo get(int id);
 
     UserEbo get(String name);
-
-    UserAuthorityDetails getUserAuthorityDetails(String name);
 }
