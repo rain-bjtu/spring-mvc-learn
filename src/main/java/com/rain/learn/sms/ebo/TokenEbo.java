@@ -1,7 +1,6 @@
 package com.rain.learn.sms.ebo;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -10,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -19,20 +20,12 @@ public class TokenEbo implements Serializable {
 
     public TokenEbo() {}
 
-    public TokenEbo(String series, UserEbo user, String token, Timestamp lastUsed) {
-        super();
-        this.series = series;
-        this.user = user;
-        this.token = token;
-        this.lastUsed = lastUsed;
-    }
-
     public TokenEbo(String series, UserEbo user, String token, Date date) {
         super();
         this.series = series;
         this.user = user;
         this.token = token;
-        this.lastUsed = new Timestamp(date.getTime());
+        this.lastUsed = date;
     }
 
     private static final long serialVersionUID = 1428826709464617859L;
@@ -52,8 +45,9 @@ public class TokenEbo implements Serializable {
 
     // not empty can't be used to java.sql.timestamp
     // @NotEmpty
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_used", nullable = false)
-    private Timestamp lastUsed;
+    private Date lastUsed;
 
     public String getSeries() {
         return series;
@@ -79,11 +73,11 @@ public class TokenEbo implements Serializable {
         this.token = token;
     }
 
-    public Timestamp getLastUsed() {
+    public Date getLastUsed() {
         return lastUsed;
     }
 
-    public void setLastUsed(Timestamp lastUsed) {
+    public void setLastUsed(Date lastUsed) {
         this.lastUsed = lastUsed;
     }
 

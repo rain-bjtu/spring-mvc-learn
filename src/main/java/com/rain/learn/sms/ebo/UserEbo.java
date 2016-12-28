@@ -1,7 +1,7 @@
 package com.rain.learn.sms.ebo;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -15,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -63,14 +65,15 @@ public class UserEbo implements Serializable {
         this.password = password;
     }
 
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "regist_time")
-    private Timestamp registTime = new Timestamp(System.currentTimeMillis());
+    private Date registTime = new Date();
 
-    public Timestamp getRegistTime() {
+    public Date getRegistTime() {
         return registTime;
     }
 
-    public void setRegistTime(Timestamp registTime) {
+    public void setRegistTime(Date registTime) {
         this.registTime = registTime;
     }
 

@@ -1,6 +1,5 @@
 package com.rain.learn.sms.remember.me;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,14 +33,13 @@ public class TokenRepositoryImpl implements PersistentTokenRepository {
     public void updateToken(String series, String tokenValue, Date lastUsed) {
         TokenEbo token = tokenDao.loadByKey(series);
         token.setToken(tokenValue);
-        token.setLastUsed(new Timestamp(lastUsed.getTime()));
+        token.setLastUsed(lastUsed);
     }
 
     @Override
     public PersistentRememberMeToken getTokenForSeries(String seriesId) {
         TokenEbo token = tokenDao.loadByKey(seriesId);
-        Date date = new Date(token.getLastUsed().getTime());
-        return new PersistentRememberMeToken(token.getUser().getName(), seriesId, token.getToken(), date);
+        return new PersistentRememberMeToken(token.getUser().getName(), seriesId, token.getToken(), token.getLastUsed());
     }
 
     @Override
