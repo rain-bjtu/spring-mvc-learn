@@ -28,4 +28,10 @@ public class ClassTest {
     public void testFiledName() {
         System.out.println(getClass().getDeclaredFields()[0].getName());
     }
+
+    @Test
+    public void testAssignableFrom() {
+        System.out.println(String.class.isAssignableFrom(Object.class));
+        System.out.println(Object.class.isAssignableFrom(String.class));
+    }
 }
