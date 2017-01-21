@@ -5,13 +5,13 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.rain.learn.sms.Constants;
@@ -33,8 +33,12 @@ public abstract class AbstractDao<PK extends Serializable, T> {
         return sessionFactory.getCurrentSession();
     }
 
-    protected EntityManager getEntityManager() {
-        return sessionFactory.createEntityManager();
+    protected CriteriaBuilder getCriteriaBuilder() {
+        return getSession().getCriteriaBuilder();
+    }
+
+    protected <E> Query<E> createQuery(CriteriaQuery<E> cq) {
+        return getSession().createQuery(cq);
     }
 
     public T getByKey(PK key) {
@@ -73,25 +77,23 @@ public abstract class AbstractDao<PK extends Serializable, T> {
     }
 
     public T queryByName(String name, String path) {
-        EntityManager em = getEntityManager();
-        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaBuilder builder = getCriteriaBuilder();
 
         CriteriaQuery<T> criteria = builder.createQuery(persistentClass);
         Root<T> root = criteria.from(persistentClass);
         criteria.select(root);
         criteria.where(builder.equal(root.get(path), name));
 
-        return em.createQuery(criteria).getSingleResult();
+        return createQuery(criteria).getSingleResult();
     }
 
     public List<T> queryAll() {
-        EntityManager em = getEntityManager();
-        CriteriaBuilder builder = em.getCriteriaBuilder();
+        CriteriaBuilder builder = getCriteriaBuilder();
 
         CriteriaQuery<T> criteria = builder.createQuery(persistentClass);
         Root<T> root = criteria.from(persistentClass);
         criteria.select(root);
 
-        return em.createQuery(criteria).getResultList();
+        return createQuery(criteria).getResultList();
     }
 }

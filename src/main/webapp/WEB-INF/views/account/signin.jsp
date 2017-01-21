@@ -41,7 +41,7 @@
                                 <div class="panel panel-default" style="background: transparent">
                                     <div class="panel-body">
                                         <h3 class="thin text-center">Sign in to your account</h3>
-                                        <p class="text-center text-muted">If you don't have an account, click &quot;<a href="signup">Register</a>&quot; to
+                                        <p class="text-center text-muted">If you don't have an account, click &quot;<a href="${signupUrl }">Register</a>&quot; to
                                             register one. </p>
                                         <hr>
 

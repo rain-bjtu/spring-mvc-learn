@@ -5,14 +5,16 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-4.2.xsd">
     <http auto-config="true" use-expressions="true">
-        <intercept-url pattern="/account/login" access="permitAll" />
-        <intercept-url pattern="/account/**" access="hasRole('ROLE_USER') and fullyAuthenticated" />
-        <intercept-url pattern="/resources/**" access="permitAll" />
-        <intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/account/login" access="permitAll" requires-channel="https"/>
+        <intercept-url pattern="/account/register" access="permitAll" requires-channel="https"/>
+        <intercept-url pattern="/account/**" access="hasRole('ROLE_USER') and fullyAuthenticated" requires-channel="https"/>
+        <intercept-url pattern="/resources/**" access="permitAll" requires-channel="https"/>
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')" requires-channel="https"/>
         <form-login login-page="/account/login" login-processing-url="/account/login" username-parameter="username" password-parameter="password"
             default-target-url="/index" authentication-failure-url="/account/login?error=1" />
         <logout invalidate-session="true" logout-url="/account/logout" logout-success-url="/account/login" />
         <remember-me token-repository-ref="tokenRepository" remember-me-parameter="rememberMe" token-validity-seconds="1209600" user-service-ref="userService"/>
+        <openid-login user-service-ref="userService"/>
         <csrf disabled="true" />
     </http>
 

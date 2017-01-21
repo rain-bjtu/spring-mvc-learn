@@ -16,7 +16,7 @@
 <c:url value="/account/login" var="authUrl"/>
 <c:url value="/account/login" var="loginUrl"/>
 <c:url value="/account/logout" var="logoutUrl" />
-<c:url value="/account/signup" var="signupUrl" />
+<c:url value="/account/register" var="signupUrl" />
 <c:url value="/account/change-password" var="changePasswordUrl"/>
 <c:url value="/account/check-password" var="checkPasswordUrl"/>
 

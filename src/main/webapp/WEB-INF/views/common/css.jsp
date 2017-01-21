@@ -2,7 +2,7 @@
 <!-- <link rel="icon" href='<c:url value="/resources/images/favicon.ico"/>'> -->
 
 <!-- google online fonts -->
-<link rel="stylesheet" media="screen" href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+<link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
 <link rel="stylesheet" href="<c:url value='/resources/css/bootstrap.min.css'/>">
 <link rel="stylesheet" href="<c:url value='/resources/css/font-awesome.min.css' />">
 

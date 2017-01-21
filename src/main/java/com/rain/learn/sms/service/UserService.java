@@ -8,6 +8,10 @@ public interface UserService extends UserDetailsService {
 
     void save(UserEbo user);
 
+    void saveAsUser(UserEbo user);
+
+    void saveAsAdministrator(UserEbo user);
+
     void delete(UserEbo user);
 
     void delete(int id);
@@ -15,4 +19,6 @@ public interface UserService extends UserDetailsService {
     UserEbo get(int id);
 
     UserEbo get(String name);
+
+    boolean exist(String name);
 }

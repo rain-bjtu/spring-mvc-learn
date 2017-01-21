@@ -48,5 +48,6 @@ public class TokenRepositoryImpl implements PersistentTokenRepository {
         for (TokenEbo token : user.getTokens()) {
             tokenDao.delete(token);
         }
+        user.setTokens(null);
     }
 }
